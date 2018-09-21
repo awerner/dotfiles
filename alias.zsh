@@ -1,1 +1,1 @@
-alias ls=exa -F --color-scale
+alias ls="exa -F --color-scale"
