@@ -8,7 +8,13 @@ zplug "denysdovhan/spaceship-zsh-theme", use:spaceship.zsh, from:github, as:them
 zplug "junegunn/fzf", use:shell/key-bindings.zsh, defer:1
 zplug "zsh-users/zsh-syntax-highlighting", from:github, defer:3
 
-if [ `uname -s` = 'Linux' ]; then
-  zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf, use:\*linux_amd64\*
-  zplug "ogham/exa", from:gh-r, as:command, use:\*linux-x86\*, rename-to:exa
-fi
+case `uname -s` in
+  Linux)
+    zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf, use:\*linux_amd64\*
+    zplug "ogham/exa", from:gh-r, as:command, use:\*linux-x86\*, rename-to:exa
+    ;;
+  Darwin)
+    zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf, use:\*darwin_amd64\*
+    zplug "ogham/exa", from:gh-r, as:command, use:\*macos-x86\*, rename-to:exa
+   ;;
+esac
